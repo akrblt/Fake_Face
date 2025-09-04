@@ -16,9 +16,10 @@ from email.mime.text import MIMEText
 class FaceSwapApp:
     def __init__(self, root):
         self.root = root
-        self.setup_ui()
+
         self.load_models()
         self.load_icons()
+        self.setup_ui()
 
         self.source_image = None
         self.target_image = None
@@ -30,8 +31,15 @@ class FaceSwapApp:
         self.display_height = 300
 
     def load_icons(self):
+        icon_size = (20, 20)
+        self.icon_load = None
+        self.icon_webcam = None
+        self.icon_ai = None
+        self.icon_swap = None
+        self.icon_save = None
+        self.icon_mail = None
+
         try:
-            icon_size = (20, 20)
             self.icon_load = ImageTk.PhotoImage(Image.open("icons/folder.png").resize(icon_size))
             self.icon_webcam = ImageTk.PhotoImage(Image.open("icons/camera.png").resize(icon_size))
             self.icon_ai = ImageTk.PhotoImage(Image.open("icons/ai.png").resize(icon_size))
@@ -41,7 +49,8 @@ class FaceSwapApp:
         except FileNotFoundError:
             messagebox.showwarning("Icon Error",
                                    "Icons not found. Please make sure the 'icons' folder exists and contains all required .png files.")
-            self.icon_load = self.icon_webcam = self.icon_ai = self.icon_swap = self.icon_save = self.icon_mail = None
+        except Exception as e:
+            messagebox.showerror("Icon Load Error", f"Failed to load one or more icons: {e}")
 
     def setup_ui(self):
         self.root.title("Professional Face Swap v2.3")
