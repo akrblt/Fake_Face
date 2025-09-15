@@ -31,7 +31,7 @@ class FaceSwapApp:
         self.display_height = 300
 
     def load_icons(self):
-        icon_size = (20, 20)
+        icon_size = (22, 22)
         self.icon_load = None
         self.icon_webcam = None
         self.icon_ai = None
