@@ -149,7 +149,7 @@ class FaceSwapApp:
         self.status_var = StringVar()
         self.status_var.set("Ready to load images...")
         status_bar = Label(self.root, textvariable=self.status_var, bd=1, relief=SUNKEN, anchor=W, bg="white",
-                           font=("Arial", 10))
+                           font=("Arial", 11))
         status_bar.pack(side=BOTTOM, fill=X)
 
         for i in range(3):
